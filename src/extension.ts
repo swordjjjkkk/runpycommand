@@ -13,8 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 			{
                 placeHolder:'请输入函数名' // 在输入框内的提示信息
             }).then(function(msg){
-			let activeEditor = vscode.window.activeTextEditor;
 
+			let activeEditor = vscode.window.activeTextEditor;
 			let text=activeEditor?.document.getText(activeEditor.selection);
 
             console.log("用户输入："+msg);
