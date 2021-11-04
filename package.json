@@ -49,5 +49,12 @@
 	},
 	"dependencies": {
 		"python-shell": "^3.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://gitee.com/swordjjjkkk/runpycommand.git"
+	},
+	"bugs": {
+		"url": "https://gitee.com/swordjjjkkk/runpycommand/issues"
 	}
 }
