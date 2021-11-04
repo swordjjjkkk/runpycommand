@@ -1,6 +1,8 @@
 # Advanced Replacer (VSCode Extension)
 Replace selections by python script.
 
+like   **int foobar[]={AABBCCDD}**   replace to   **int foobar[]={0xAA,0xBB,0xCC,0xDD}** or more complex situations.
+
 Only two command export.
 
 OpenPyFile    //edit custom command
