@@ -1,6 +1,6 @@
 {
-	"name": "vimlpython",
-	"displayName": "viml-python",
+	"name": "advancedreplacer",
+	"displayName": "advanced-replacer",
 	"publisher": "swordjjjkkk",
 	"description": "",
 	"version": "0.0.1",
@@ -17,11 +17,11 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "vimlpython.runpycommand",
+				"command": "advancedreplacer.runpycommand",
 				"title": "RunPyCommand"
 			},
 			{
-				"command": "vimlpython.openpyfile",
+				"command": "advancedreplacer.openpyfile",
 				"title": "OpenPyFile"
 			}
 		]
