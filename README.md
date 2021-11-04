@@ -9,6 +9,16 @@ OpenPyFile    //edit custom command
 
 RunPyCommand  //run custom command
 
+通过python脚本替换选中的文本
+
+比如 **int foobar[]={AABBCCDD}**   替换为   **int foobar[]={0xAA,0xBB,0xCC,0xDD}** 或者是更加复杂的情况.
+
+插件只有两个命令
+
+OpenPyFile    //在此文件编辑自定义命令
+
+RunPyCommand  //运行编辑过的命令
+
 # USAGE EXAMPLE
 
 ### step1:
