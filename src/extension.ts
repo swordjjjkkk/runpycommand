@@ -1,9 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { execFile } from 'child_process';
+// import { execFile } from 'child_process';
+import { PythonShell } from 'python-shell';
 
-// this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	
@@ -21,14 +21,47 @@ export function activate(context: vscode.ExtensionContext) {
             console.log("用户输入："+msg);
             console.log("用户选择："+text);
 
-			const child=execFile("python",[__dirname+"\\script.py",msg!,text!],(error: any,stdout: any,stderr: any)=>{
-				console.log(error);
-				console.log(stdout);
-				console.log(stderr);
-				activeEditor!.edit(editBuilder => {
-						editBuilder.replace(activeEditor!.selection, stdout);
-				});
+			let options={
+				// mode:'text',
+				// pythonPath:'python',
+				pythonOptions:['-u'],
+				scriptPath:__dirname,
+				args:[text,msg!]
+			};
+			PythonShell.run("script.py",options,function(err,results){
+				if(err)
+				{
+					console.log(err);
+				}
+				let res=JSON.parse(results![0]);
+				if(res["res"]===0)
+				{
+					console.log(res);
+					activeEditor!.edit(editBuilder => {
+						if (activeEditor!.selection.isEmpty)
+						{
+							editBuilder.insert(activeEditor!.selection.active,res["data"]);
+						}
+						else
+						{
+							editBuilder.replace(activeEditor!.selection, res["data"]);
+						}
+					});
+				}
+				else
+				{
+					console.log("python run result wrong!!");
+				}
 			});
+			
+			// const child=execFile("python",[__dirname+"\\script.py",msg!,text!],(error: any,stdout: any,stderr: any)=>{
+			// 	console.log(error);
+			// 	console.log(stdout);
+			// 	console.log(stderr);
+			// 	activeEditor!.edit(editBuilder => {
+			// 			editBuilder.replace(activeEditor!.selection, stdout);
+			// 	});
+			// });
 			
 
         });
