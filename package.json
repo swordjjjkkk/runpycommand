@@ -2,6 +2,7 @@
 	"name": "advancedreplacer",
 	"displayName": "advanced-replacer",
 	"publisher": "truman",
+	"icon":"images/advancedreplacer.png",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
