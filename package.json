@@ -1,5 +1,5 @@
 {
-	"name": "extpy",
+	"name": "vimlpython",
 	"displayName": "viml-python",
 	"publisher": "swordjjjkkk",
 	"description": "",
@@ -17,11 +17,11 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extpy.runpycommand",
+				"command": "vimlpython.runpycommand",
 				"title": "RunPyCommand"
 			},
 			{
-				"command": "extpy.openpyfile",
+				"command": "vimlpython.openpyfile",
 				"title": "OpenPyFile"
 			}
 		]
