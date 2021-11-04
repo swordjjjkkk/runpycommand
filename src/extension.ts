@@ -21,7 +21,7 @@ function runPyCommand(vsctx: vscode.ExtensionContext,text:string,command:string)
 		PythonShell.run("script.py",options,function(err,results){
 			if(err)
 			{
-				vscode.window.showInformationMessage("RunPyCommand: script.py command crashed , please check your code!! ");
+				vscode.window.showInformationMessage("RunPyCommand: script.py crashed , please check your code!! ");
 				console.log(err);
 			}
 			let res=JSON.parse(results![0]);
@@ -53,6 +53,10 @@ function runPyCommand(vsctx: vscode.ExtensionContext,text:string,command:string)
 				}
 
 			}
+			else if(res["res"]===-1)
+			{
+				vscode.window.showInformationMessage("RunPyCommand: script.py run command failed , please check your code!! ");
+			}
 			else
 			{
 				console.log("python run result wrong!!");
@@ -65,6 +69,7 @@ function runPyCommand(vsctx: vscode.ExtensionContext,text:string,command:string)
 		vscode.window.showInformationMessage("RunPyCommand:got some error.but it's ok! don't be afraid! ");
 	}
 }
+
 export function activate(context: vscode.ExtensionContext) {
 	runPyCommand(context,"","getAllCommand");
 	let disposable = vscode.commands.registerCommand('extpy.runpycommand', () => {
@@ -79,7 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let disposable2 = vscode.commands.registerCommand('extpy.openpyfile', () => {
-		vscode.window.showTextDocument(vscode.Uri.file(__dirname+"/script.py"));
+		vscode.window.showTextDocument(vscode.Uri.file(__dirname+"/custom.py"));
 	});
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
