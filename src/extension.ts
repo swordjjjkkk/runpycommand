@@ -77,9 +77,12 @@ export function activate(context: vscode.ExtensionContext) {
 		{
 			placeHolder:'Input Command' // 在输入框内的提示信息
 		}).then(function(msg){
-			let activeEditor = vscode.window.activeTextEditor;
-			let text=activeEditor!.document.getText(activeEditor!.selection);
-			runPyCommand(context,text,msg!);
+			if(msg!=="" && msg!==undefined)
+			{
+				let activeEditor = vscode.window.activeTextEditor;
+				let text=activeEditor!.document.getText(activeEditor!.selection);
+				runPyCommand(context,text,msg!);
+			}
         });
 	});
 
