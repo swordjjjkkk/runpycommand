@@ -10,12 +10,17 @@ def addCommand(fn):
 def customFunction():
 	@addCommand
 	def example1(text,param=None):
-		print(json.dumps({"res":0,"data":text+"hello"}))
-
-	@addCommand
-	def example2(text,param=None):
-		print(json.dumps({"res":0,"data":text+"world"+param[0]}))
-
+		print(json.dumps({"res":0,"data":text+"hello,world"}))
 	@addCommand
 	def str2hex(text,param=None):
-		print(json.dumps({"res":0,"data":text+"str2hex"}))
+		tmp=""
+		a=0
+		for i in text:
+			if a==0:
+				tmp+="0x"
+			tmp+=i
+			a+=1
+			if a==2:
+				tmp+=","
+				a=0
+		print(json.dumps({"res":0,"data":tmp}))
